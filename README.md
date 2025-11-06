@@ -1,1 +1,1 @@
-# disease_model_-migration
+# disease_model_migration

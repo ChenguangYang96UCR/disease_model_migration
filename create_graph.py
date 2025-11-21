@@ -147,6 +147,8 @@ def read_csv_file(file_path, data_name = 'pd'):
                     Node_label = int(row[label_index])
 
         print(f'Nodes length: {len(Nodes)}')
+        print(f'Positive Nodes number {Nodes_label.count(1)}')
+        print(f'Negative Nodes number {Nodes_label.count(0)}')
         return Nodes, Nodes_label
     
 
@@ -218,13 +220,17 @@ if __name__ == '__main__':
         Nodes, Nodes_label = read_csv_file(csv_file_path, args.data)
         if args.split:
             split_length = int(len(Nodes) * 0.5)
-            train_split_length = int(len(Nodes) * 0.25)
+            train_split_length = int(len(Nodes) * 0.1)
             train_Nodes = Nodes[:train_split_length]
             train_Nodes_label = Nodes_label[:train_split_length]
             test_Nodes = Nodes[split_length + 1:]
             test_Nodes_label = Nodes_label[split_length + 1:]
             print(f'{args.data} train node number: {len(train_Nodes)}')
+            print(f'Positive train Nodes number {train_Nodes_label.count(1)}')
+            print(f'Negative train Nodes number {train_Nodes_label.count(0)}')
             print(f'{args.data} test node number: {len(test_Nodes)}')
+            print(f'Positive test Nodes number {test_Nodes_label.count(1)}')
+            print(f'Negative test Nodes number {test_Nodes_label.count(0)}')
 
     if args.data == 'alz':
         csv_file_path = 'data/alzheimers_disease_data.csv'
